@@ -27,27 +27,22 @@ wrangler init webhook-notification
 ```
 
 ```shell
-wrangler kv:namespace create "test"
-
-# 🌀 Creating namespace with title "worker-test"
-# Would you like to help improve Wrangler by sending usage metrics to Cloudflare? (y/n) n
-# Your choice has been saved in the following file: ../../../.wrangler/metrics.json.
-
-#   You can override the user level setting for a project in `wrangler.toml`:
-
-#    - to disable sending metrics for a project: `send_metrics = false`
-#    - to enable sending metrics for a project: `send_metrics = true`
-# ✨ Success!
-# Add the following to your configuration file in your kv_namespaces array:
-# { binding = "test", id = "xxx65970bb464xxx8cb373fdaff89xxx" }
-```
-
-```shell
-wrangler kv:key put --binding=test "names" "alex,bob,mike"
+wrangler kv:namespace create "notification_namespace"    
 
 #  ⛅️ wrangler 2.6.2 
 # -------------------
-# Writing the value "alex,bob,mike" to key "names" on namespace xxx65970bb464xxx8cb373fdaff89xxx.
+# 🌀 Creating namespace with title "webhook-notification-notification_namespace"
+# ✨ Success!
+# Add the following to your configuration file in your kv_namespaces array:
+# { binding = "notification_namespace", id = "xxxx" }
+```
+
+```shell
+wrangler kv:key put --binding=notification_namespace "standup_owner_names" "alex,bob,mike"
+
+#  ⛅️ wrangler 2.6.2 
+# -------------------
+# Writing the value "alex,bob,mike" to key "names" on namespace xxxx.
 ```
 
 ```shell

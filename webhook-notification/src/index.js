@@ -14,21 +14,25 @@ import { send_google_chat_message } from "./google_chat_notificaiton";
 
 export default {
 	async scheduled(controller, env, ctx) {
-		console.log("start send standup message");
+		console.log("start send message....");
 
-		var standup_owner_name = await get_owner_name(env, "names");
+		var standup_owner_name = await get_owner_name(env, env.KV_STANDUP_OWNER_NAMES);
 		console.log("standup_owner_name: " + standup_owner_name);
 
-		var message = `今日的站会马上开始!!!\n
-今日站会 owner 是: ${standup_owner_name}\n
-会议地址是: https://zoom.us/j/xxx`;
-		console.log("start send standup message: " + message);
-		send_google_chat_message(env, message);
+		var message = `今日的站会马上开始!!!\n今日站会 owner 是: ${standup_owner_name}\n会议地址是: https://zoom.us/j/xxxx`;
+		console.log("message text: " + message);
+
+		if (env.MESSAGE_TYPE == 'GoogleChat'){
+			console.log("start send google chat message");
+			send_google_chat_message(env, message);
+		} else {
+			console.log("message type not support, do nothing....");
+		}
 	},
 };
 
 async function get_owner_name(env, type) {
-	var namesString = await env.NOTIFICATION.get(type);
+	var namesString = await env.notification_namespace.get(type);
 	var names = namesString.split(',');
 	return names[0];
 }
