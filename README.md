@@ -42,3 +42,14 @@ wrangler kv:namespace create "test"
 # { binding = "test", id = "xxx65970bb464xxx8cb373fdaff89xxx" }
 ```
 
+```shell
+wrangler kv:key put --binding=test "names" "alex,bob,mike"
+
+#  ⛅️ wrangler 2.6.2 
+# -------------------
+# Writing the value "alex,bob,mike" to key "names" on namespace xxx65970bb464xxx8cb373fdaff89xxx.
+```
+
+```shell
+wrangler publish
+```

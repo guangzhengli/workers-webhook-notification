@@ -8,5 +8,8 @@
   "scripts": {
     "start": "wrangler dev",
     "deploy": "wrangler publish"
+  },
+    "dependencies": {
+    "node-fetch": "^2.6.7"
   }
 }

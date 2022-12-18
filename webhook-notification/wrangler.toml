@@ -2,5 +2,15 @@ name = "webhook-notification"
 main = "src/index.js"
 compatibility_date = "2022-12-18"
 
+kv_namespaces = [
+    { binding = "test", id = "xxx65970bb464xxx8cb373fdaff89xxx" }
+]
+
 [triggers]
-crons = [ "1 * * * *" ]
+crons = [ "*/5 * * * *" ]
+# crons = [ "10 2 * * 2-6" ]
+# crons = [ "10 2 * * mon-fri" ]
+
+[vars]
+GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxxx&token=xxxx"
+WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx-xxxx"
