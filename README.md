@@ -27,6 +27,8 @@ wrangler whoami
 
 **警告**⚠️: KV namespace 的名字必须是 `notification_namespace`, 因为这个名字直接被代码使用，否则需要你自己修改 `index.js` 中的代码。
 
+
+
 使用下方命令创建 namespace。
 
 ```shell
@@ -41,7 +43,10 @@ wrangler kv:namespace create "notification_namespace"
 ```
 运行完这个命令，会得到一个像 `{ binding = "notification_namespace", id = "xxxx" }` 的字符串。将它替换到 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 文件中的对应 `kv_namespaces` 配置中。
 
+
+
 ### 将轮换名单存储到 KV namespace 中
+
 使用 `wrangler kv:key put` 命令将 value="alex,bob,mike" 和 key="standup_owner_names" 存储到上一步创建的 namespaces 中.
 
 ```shell
@@ -52,30 +57,48 @@ wrangler kv:key put --binding=notification_namespace "standup_owner_names" "alex
 # Writing the value "alex,bob,mike" to key "names" on namespace xxxx.
 ```
 
+
+
 ### 选择你想要发送的消息类型
+
 目前该仓库只支持 google chat(默认) 和 企业微信。
 
 如果你想发送消息到 google chat. 你可以跟着这篇文章 [create_a_google_chat_webhook](https://developers.google.com/chat/how-tos/webhooks#create_a_webhook) 去拿到 space 的 webhook url.
 
 替换 `GOOGLE_CHAT_WEBHOOK` 配置在 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 两个文件中.
 
+
+
 如果你想发送消息到企业微信，你需要从企业微信群中添加机器人并获取 webhook url, 并将它替换以下文件的 `WEWORK_CHAT_WEBHOOK` 配置中， 需替换`/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml`文件，并且记住将 `MESSAGE_TYPE` 改成 `WeworkChat`。你可以从 [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) 获得更多文档消息。
 
-### 设置定时时间
-**警告:**⚠️目前的时间只支持 UTC 时间，所以需要根据时区进行转换。
 
-改变 `[triggers].[crons]` 配置在 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 文件中.
+
+### 设置定时时间
+
+**警告:** ⚠️目前的时间只支持 UTC 时间，所以需要根据时区进行转换。
+
+修改 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 文件中 `[triggers].[crons]` 的配置.
+
+其中 `/owners-name-switch/wrangler.toml` 配置的是切换轮换名单时间，默认是周五 5:00PM UTC+8。
+
+其中 `/webhook-notification/wrangler.toml` 配置的每日提醒的时间，默认是周一至五 10:10PM UTC+8。
 
 你可以从官方文档获得更多的定时信息 [cron-triggers](https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/).
 
+
+
 ### 发布 worker 到生产环境
+
 执行以下命令即可。
 
 ```shell
 wrangler publish
 ```
 
+
+
 ## 为什么设计这个功能
+
 - 缩短准备时间，包括会议室和share。
 - 减少会议开始时常见的灵魂问题，今天的 owner 是谁。
 - 常常到点后会有人忘记加入会议。
