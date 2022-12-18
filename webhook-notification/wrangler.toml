@@ -1,0 +1,6 @@
+name = "webhook-notification"
+main = "src/index.js"
+compatibility_date = "2022-12-18"
+
+[triggers]
+crons = [ "1 * * * *" ]
