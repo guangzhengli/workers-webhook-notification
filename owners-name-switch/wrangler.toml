@@ -2,5 +2,15 @@ name = "owners-name-switch"
 main = "src/index.js"
 compatibility_date = "2022-12-18"
 
+kv_namespaces = [
+    { binding = "notification_namespace", id = "xxxx" }
+]
+
 [triggers]
-crons = [ "1 * * * *" ]
+crons = [ "0 9 * * fri" ]
+
+[vars]
+KV_STANDUP_OWNER_NAMES = "standup_owner_names"
+MESSAGE_TYPE = "GoogleChat" # MESSAGE_TYPE = "WeworkChat"
+GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxx&token=xxx"
+WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx"

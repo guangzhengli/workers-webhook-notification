@@ -3,14 +3,15 @@ main = "src/index.js"
 compatibility_date = "2022-12-18"
 
 kv_namespaces = [
-    { binding = "test", id = "xxx65970bb464xxx8cb373fdaff89xxx" }
+    { binding = "notification_namespace", id = "xxxx" }
 ]
 
 [triggers]
-crons = [ "*/5 * * * *" ]
-# crons = [ "10 2 * * 2-6" ]
+crons = [ "10 2 * * 2-6" ]
 # crons = [ "10 2 * * mon-fri" ]
 
 [vars]
-GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxxx&token=xxxx"
-WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx-xxxx"
+KV_STANDUP_OWNER_NAMES = "standup_owner_names"
+MESSAGE_TYPE = "GoogleChat" # MESSAGE_TYPE = "WeworkChat"
+GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxx&token=xxx"
+WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx"
