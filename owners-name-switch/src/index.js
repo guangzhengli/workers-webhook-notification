@@ -10,8 +10,38 @@
  * Learn more at https://developers.cloudflare.com/workers/runtime-apis/scheduled-event/
  */
 
+import { send_google_chat_message } from "./google_chat_notificaiton";
+import { send_wework_chat_message } from "./wework_chat_notificaiton";
+
 export default {
 	async scheduled(controller, env, ctx) {
-		console.log(`Hello World!`);
+		console.log("start send message....");
+
+		var next_standup_owner_name = await getAndRotateOwners(env, env.KV_STANDUP_OWNER_NAMES);
+		console.log("next_standup_owner_name: " + next_standup_owner_name);
+
+		var message = `Happy Friday! 别忘记填写 timecard 哦!!!\n下周站会 owner 是: ${next_standup_owner_name}`;
+		console.log("message text: " + message);
+
+		if (env.MESSAGE_TYPE == 'GoogleChat'){
+			console.log("start send google chat message");
+			send_google_chat_message(env, message);
+		} else if(env.MESSAGE_TYPE == 'WeworkChat') {
+			console.log("start send wework chat message");
+			send_wework_chat_message(env, message);
+		} else {
+			console.log("message type not support, do nothing....");
+		}
+		console.log("send message success....");
 	},
 };
+
+async function getAndRotateOwners(env, type) {
+	var namesString = await env.notification_namespace.get(type);
+	var names = namesString.split(',');
+	names.push(names.shift());
+	var storeNameString = names.join(',');
+
+	await env.notification_namespace.put(type, storeNameString);
+	return names[0];
+}
