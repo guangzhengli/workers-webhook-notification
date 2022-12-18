@@ -9,7 +9,7 @@
     "start": "wrangler dev",
     "deploy": "wrangler publish"
   },
-    "dependencies": {
+  "dependencies": {
     "node-fetch": "^2.6.7"
   }
 }

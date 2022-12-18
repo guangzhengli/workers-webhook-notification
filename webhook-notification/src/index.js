@@ -32,6 +32,7 @@ export default {
 		} else {
 			console.log("message type not support, do nothing....");
 		}
+		console.log("send message success....");
 	},
 };
 
