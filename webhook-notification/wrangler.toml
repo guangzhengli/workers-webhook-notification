@@ -12,6 +12,7 @@ crons = [ "10 2 * * 2-6" ]
 
 [vars]
 KV_STANDUP_OWNER_NAMES = "standup_owner_names"
-MESSAGE_TYPE = "GoogleChat" # MESSAGE_TYPE = "WeworkChat"
+MESSAGE_TYPE = "WeworkChat"
+# MESSAGE_TYPE = "GoogleChat" 
 GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxx&token=xxx"
 WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx"

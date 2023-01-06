@@ -61,15 +61,14 @@ wrangler kv:key put --binding=notification_namespace "standup_owner_names" "alex
 
 ### 选择你想要发送的消息类型
 
-目前该仓库只支持 google chat(默认) 和 企业微信。
+目前该仓库只支持企业微信(默认) 和 google chat。
+
+如果你想发送消息到企业微信，你需要从企业微信群中添加机器人并获取 webhook url, 并将它替换以下文件的 `WEWORK_CHAT_WEBHOOK` 配置中， 需替换`/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml`文件，并且记住将 `MESSAGE_TYPE` 改成 `WeworkChat`。你可以从 [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) 获得更多文档消息。
+
 
 如果你想发送消息到 google chat. 你可以跟着这篇文章 [create_a_google_chat_webhook](https://developers.google.com/chat/how-tos/webhooks#create_a_webhook) 去拿到 space 的 webhook url.
 
-替换 `GOOGLE_CHAT_WEBHOOK` 配置在 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 两个文件中.
-
-
-
-如果你想发送消息到企业微信，你需要从企业微信群中添加机器人并获取 webhook url, 并将它替换以下文件的 `WEWORK_CHAT_WEBHOOK` 配置中， 需替换`/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml`文件，并且记住将 `MESSAGE_TYPE` 改成 `WeworkChat`。你可以从 [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) 获得更多文档消息。
+在 `/owners-name-switch/wrangler.toml` and `/webhook-notification/wrangler.toml` 两个文件中替换 `GOOGLE_CHAT_WEBHOOK` 配置。并且记住将 `MESSAGE_TYPE` 改成 `GoogleChat`。
 
 
 
