@@ -20,7 +20,6 @@ export default {
 		var next_standup_owner_name = await getAndRotateOwners(env, env.KV_STANDUP_OWNER_NAMES);
 		console.log("next_standup_owner_name: " + next_standup_owner_name);
 
-		var message = `Happy Friday! 别忘记填写 timecard 哦!!!\n下周站会 owner 是: ${next_standup_owner_name}`;
 		console.log("message text: " + message);
 
 		if (env.MESSAGE_TYPE == 'GoogleChat'){
