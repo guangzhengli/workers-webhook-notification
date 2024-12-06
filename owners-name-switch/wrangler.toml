@@ -7,7 +7,7 @@ kv_namespaces = [
 ]
 
 [triggers]
-crons = [ "0 9 * * fri" ]
+crons = [ "30 9 * * fri" ]
 
 [vars]
 KV_STANDUP_OWNER_NAMES = "standup_owner_names"
