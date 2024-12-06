@@ -20,7 +20,7 @@ export default {
 		var next_cr_owner_name = await getAndRotateOwners(env, env.KV_STANDUP_OWNER_NAMES);
 		console.log("next_cr_owner_name: " + next_cr_owner_name);
 
-		var message = `下周 CR owner 是: ${next_cr_owner_name}`;
+		var message = `下班下班🐶！！下周 CR owner 是: ${next_cr_owner_name}`;
 
 		console.log("message text: " + message);
 
