@@ -1,0 +1,18 @@
+name = "cr-owners-name-switch"
+main = "src/index.js"
+compatibility_date = "2022-12-18"
+logpush = true
+
+kv_namespaces = [
+    { binding = "cr_notification_namespace", id = "44e79ee6c88c46ec8d58a2f69b5fb455" }
+]
+
+[triggers]
+crons = [ "0 10 * * fri" ]
+
+[vars]
+KV_STANDUP_OWNER_NAMES = "owner_names"
+MESSAGE_TYPE = "WeworkChat"
+# MESSAGE_TYPE = "GoogleChat"
+# GOOGLE_CHAT_WEBHOOK = "https://chat.googleapis.com/v1/spaces/AAAAk0XaY5U/messages?key=xxx&token=xxx"
+WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=54c781e4-8fba-417b-898e-a94b0d9ce1e9"

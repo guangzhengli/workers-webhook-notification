@@ -1,0 +1,24 @@
+import fetch from 'node-fetch';
+ 
+export function send_wework_chat_message(env, message) {
+    const webhookURL = env.WEWORK_CHAT_WEBHOOK;
+
+    const data = JSON.stringify({
+        "msgtype": "text",
+        "text": {
+            "content": message
+        }
+    });
+    let resp;
+    fetch(webhookURL, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: data,
+    }).then((response) => {
+    resp = response;
+    console.log(response);
+    });
+    return resp;
+}

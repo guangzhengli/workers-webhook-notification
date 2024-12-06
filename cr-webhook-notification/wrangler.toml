@@ -1,0 +1,17 @@
+name = "cr-webhook-notification"
+main = "src/index.js"
+compatibility_date = "2022-12-18"
+logpush = true
+
+kv_namespaces = [
+    { binding = "cr_notification_namespace", id = "44e79ee6c88c46ec8d58a2f69b5fb455" }
+]
+
+[triggers]
+crons = [ "0 9 * * 2-6" ]
+
+[vars]
+KV_STANDUP_OWNER_NAMES = "owner_names"
+MESSAGE_TYPE = "WeworkChat"
+# MESSAGE_TYPE = "GoogleChat"
+WEWORK_CHAT_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cebc5eb6-f4b9-49e8-a6a2-17cbc0dc0f0f"
