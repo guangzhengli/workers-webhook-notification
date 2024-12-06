@@ -10,7 +10,6 @@
  * Learn more at https://developers.cloudflare.com/workers/runtime-apis/scheduled-event/
  */
 
-import { send_google_chat_message } from "./google_chat_notificaiton";
 import { send_wework_chat_message } from "./wework_chat_notificaiton";
 
 export default {
@@ -24,15 +23,7 @@ export default {
 
 		console.log("message text: " + message);
 
-		if (env.MESSAGE_TYPE == 'GoogleChat'){
-			console.log("start send google chat message");
-			send_google_chat_message(env, message);
-		} else if(env.MESSAGE_TYPE == 'WeworkChat') {
-			console.log("start send wework chat message");
-			send_wework_chat_message(env, message);
-		} else {
-			console.log("message type not support, do nothing....");
-		}
+		await send_wework_chat_message(env, message);
 		console.log("send message success....");
 	},
 };

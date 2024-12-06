@@ -1,6 +1,7 @@
 name = "owners-name-switch"
 main = "src/index.js"
 compatibility_date = "2022-12-18"
+logpush = true
 
 kv_namespaces = [
     { binding = "notification_namespace", id = "709ce8dbdd5945cc9fc538c7c19d8754" }
