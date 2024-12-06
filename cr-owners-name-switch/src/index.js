@@ -38,11 +38,11 @@ export default {
 };
 
 async function getAndRotateOwners(env, type) {
-	var namesString = await env.notification_namespace.get(type);
+	var namesString = await env.cr_notification_namespace.get(type);
 	var names = namesString.split(',');
 	names.push(names.shift());
 	var storeNameString = names.join(',');
 
-	await env.notification_namespace.put(type, storeNameString);
+	await env.cr_notification_namespace.put(type, storeNameString);
 	return names[0];
 }

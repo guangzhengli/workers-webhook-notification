@@ -16,7 +16,7 @@ export default {
 	async scheduled(controller, env, ctx) {
 		console.log("start send message....");
 
-		var namesString = await env.notification_namespace.get(env.KV_STANDUP_OWNER_NAMES);
+		var namesString = await env.cr_notification_namespace.get(env.KV_STANDUP_OWNER_NAMES);
 		var names = namesString.split(',');
 		const today_name = names[0];
 		const next_name = names[1];
