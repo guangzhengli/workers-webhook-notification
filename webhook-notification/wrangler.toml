@@ -9,7 +9,7 @@ kv_namespaces = [
 
 [triggers]
 # crons = [ "*/5 * * * *" ]
-crons = [ "35 1 * * 2-6", "40 1 * * 2-6" ]
+crons = [ "35 1 * * 2-6", "45 1 * * 2-6" ]
 # crons = [ "10 2 * * mon-fri" ]
 
 [vars]

@@ -23,7 +23,7 @@ export default {
 
 		console.log("standup_owner_name: " + today_name + ", " + next_name);
 
-		var message = `今日的站会 9:40 开始!!!\n今日站会 owner 是: ${today_name}\nZoom🔗：https://thoughtworks.zoom.us/j/96062834928`;
+		var message = `今日的站会 9:45 开始!!!\n今日站会 owner 是: ${today_name}\nZoom🔗：https://thoughtworks.zoom.us/j/96062834928`;
 		console.log("message text: " + message);
 
 		console.log("start send wework chat message");
